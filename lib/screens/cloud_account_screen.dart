@@ -19,6 +19,12 @@ class _CloudAccountScreenState extends State<CloudAccountScreen> {
   bool _working = false;
   String? _message;
 
+  bool get _googleSignInAvailable =>
+      kIsWeb ||
+      defaultTargetPlatform == TargetPlatform.android ||
+      defaultTargetPlatform == TargetPlatform.iOS ||
+      defaultTargetPlatform == TargetPlatform.windows;
+
   String _authMessage(FirebaseAuthException error) => switch (error.code) {
         'invalid-credential' ||
         'wrong-password' ||
@@ -186,23 +192,26 @@ class _CloudAccountScreenState extends State<CloudAccountScreen> {
                                     child: Text(_register
                                         ? 'Create account'
                                         : 'Sign in')),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 10),
-                                  child: Row(children: [
-                                    Expanded(child: Divider()),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 12),
-                                      child: Text('or'),
-                                    ),
-                                    Expanded(child: Divider()),
-                                  ]),
-                                ),
-                                OutlinedButton.icon(
-                                    onPressed:
-                                        _working ? null : _signInWithGoogle,
-                                    icon: const Icon(Icons.account_circle),
-                                    label: const Text('Continue with Google')),
+                                if (_googleSignInAvailable) ...[
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Row(children: [
+                                      Expanded(child: Divider()),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12),
+                                        child: Text('or'),
+                                      ),
+                                      Expanded(child: Divider()),
+                                    ]),
+                                  ),
+                                  OutlinedButton.icon(
+                                      onPressed:
+                                          _working ? null : _signInWithGoogle,
+                                      icon: const Icon(Icons.account_circle),
+                                      label:
+                                          const Text('Continue with Google')),
+                                ],
                                 TextButton(
                                     onPressed: _working
                                         ? null
