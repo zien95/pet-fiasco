@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -44,37 +41,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDApEmEa2fWsk1UIk7bfYRi-IhpArYTMgo',
-    appId: '1:546956544991:web:c6fc6b03fdd0ad5416926a',
-    messagingSenderId: '546956544991',
-    projectId: 'kitty-adventure-zona',
-    authDomain: 'kitty-adventure-zona.firebaseapp.com',
-    storageBucket: 'kitty-adventure-zona.firebasestorage.app',
+    apiKey: 'AIzaSyDTQEAPmPeYEhlN6axjA5LKHTOBWfZhcBA',
+    appId: '1:383935377007:web:71341d5f1ac3856d06e79a',
+    messagingSenderId: '383935377007',
+    projectId: 'pet-fiasco-live-2026',
+    authDomain: 'pet-fiasco-live-2026.firebaseapp.com',
+    storageBucket: 'pet-fiasco-live-2026.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD9WCl3gTs3RhWfQr1nyDrP3gzwyFozynQ',
-    appId: '1:546956544991:android:0fd16b55ca9f816716926a',
-    messagingSenderId: '546956544991',
-    projectId: 'kitty-adventure-zona',
-    storageBucket: 'kitty-adventure-zona.firebasestorage.app',
+    apiKey: 'AIzaSyDOrekc3leSmZM7C6yHf22u1-gIi0iTzlg',
+    appId: '1:383935377007:android:15f566c946412d8306e79a',
+    messagingSenderId: '383935377007',
+    projectId: 'pet-fiasco-live-2026',
+    storageBucket: 'pet-fiasco-live-2026.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCrhfGC3FRz2vFrEVjZdMoIDNnR8WRm0L0',
-    appId: '1:546956544991:ios:3c53f9ecd1e46eca16926a',
-    messagingSenderId: '546956544991',
-    projectId: 'kitty-adventure-zona',
-    storageBucket: 'kitty-adventure-zona.firebasestorage.app',
+    apiKey: 'AIzaSyBaJo3gKrvy1EpWQ2bRab7MvVcCtYTLxBI',
+    appId: '1:383935377007:ios:88915a4593dc931406e79a',
+    messagingSenderId: '383935377007',
+    projectId: 'pet-fiasco-live-2026',
+    storageBucket: 'pet-fiasco-live-2026.firebasestorage.app',
     iosBundleId: 'com.example.tryingToRestorePup',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCrhfGC3FRz2vFrEVjZdMoIDNnR8WRm0L0',
-    appId: '1:546956544991:ios:3c53f9ecd1e46eca16926a',
-    messagingSenderId: '546956544991',
-    projectId: 'kitty-adventure-zona',
-    storageBucket: 'kitty-adventure-zona.firebasestorage.app',
+    apiKey: 'AIzaSyBaJo3gKrvy1EpWQ2bRab7MvVcCtYTLxBI',
+    appId: '1:383935377007:ios:88915a4593dc931406e79a',
+    messagingSenderId: '383935377007',
+    projectId: 'pet-fiasco-live-2026',
+    storageBucket: 'pet-fiasco-live-2026.firebasestorage.app',
     iosBundleId: 'com.example.tryingToRestorePup',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDTQEAPmPeYEhlN6axjA5LKHTOBWfZhcBA',
+    appId: '1:383935377007:web:71341d5f1ac3856d06e79a',
+    messagingSenderId: '383935377007',
+    projectId: 'pet-fiasco-live-2026',
+    authDomain: 'pet-fiasco-live-2026.firebaseapp.com',
+    storageBucket: 'pet-fiasco-live-2026.firebasestorage.app',
   );
 }

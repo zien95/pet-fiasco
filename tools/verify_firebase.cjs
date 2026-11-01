@@ -4,7 +4,7 @@ const crypto = require('node:crypto');
 const {execFileSync} = require('node:child_process');
 const options = fs.readFileSync('lib/firebase_options.dart','utf8');
 const key = options.match(/static const FirebaseOptions web[^]*?apiKey: '([^']+)'/)[1];
-const project = 'kitty-adventure-zona';
+const project = 'pet-fiasco-live-2026';
 async function request(method,url,body,token) {
   let config = 'header = "Content-Type: application/json"\n';
   if(token) config += `header = "Authorization: Bearer ${token}"\n`;

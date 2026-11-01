@@ -4,7 +4,7 @@
   "version": "26.11.0",
   "identifier": "com.zocle.petfiasco",
   "build": {
-    "frontendDist": "https://pet-fiasco.web.app/?tauri-mobile=1"
+    "frontendDist": "https://pet-fiasco-game.web.app/?tauri-mobile=1"
   },
   "app": {
     "windows": [

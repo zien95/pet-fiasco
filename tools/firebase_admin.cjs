@@ -12,5 +12,6 @@ try {
   const result = JSON.parse(raw);
   if (result.signIn) delete result.signIn.hashConfig;
   if (result.client) delete result.client.apiKey;
+  if (result.clientSecret) result.clientSecret = '[redacted]';
   process.stdout.write(JSON.stringify(result,null,2)+'\n');
 } catch(e) {process.stdout.write(e.stdout || ''); process.exit(1);}

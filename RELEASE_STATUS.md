@@ -1,36 +1,32 @@
 # Pet Fiasco v26.11.0 release status
 
-## Release candidate — verified 2026-10-21
+## Release candidate — rebuilding for publication 2026-11-01
 
 - Codename: **Exploration Update: Part 1**.
-- Flutter tests: **57 passed**. Focused exploration/mobile-shell analyzer: no issues.
-- Web release bundle contains version `26.11.0` / build `261100`, the new
-  exploration content, the Tauri mobile marker, and the updated download page.
-- Android APK is the online, mobile-only Tauri shell for arm64 Android. It is
-  signed with the same Android Debug certificate as v26.10.0, preserving direct
-  upgrade compatibility, and reports `26.11.0` / `261100`.
-- iPhone/iPad IPA is the online, mobile-only Tauri shell, supports both iPhone
-  and iPad device families, and is unsigned for installation with Sideloadly.
-- macOS is Apple Silicon only, ad-hoc signed and unnotarized under the prior
-  explicit authorization. It reports `26.11.0` / `261100`, launched locally,
-  and its DMG passed image and signature verification. macOS may require manual
-  approval in Privacy & Security. Cross-Mac authentication persistence remains
-  independently unverified.
+- Flutter tests: **57 passed**. Full analyzer completed with only the repository's
+  pre-existing lint backlog.
+- Hosting, email/password, Google sign-in, Firestore rules, update checks, and
+  both live sites now use the healthy `pet-fiasco-live-2026` Firebase project.
+- Disposable-account QA passed registration, sign-in, save/restore, cleanup,
+  unauthenticated denial, and cross-account denial.
+- Native Windows and Linux packaging is automated in
+  `.github/workflows/desktop-release.yml`. Windows supports Firebase accounts;
+  Linux continues safely with local progress when Firebase initialization is
+  unavailable.
+- The Android and iPhone/iPad packages remain mobile-only Tauri shells. Android
+  betas use Firebase App Distribution; the public IPA remains unsigned for
+  Sideloadly and cannot be sent through App Distribution without Apple signing.
+- Apple sign-in, Play Games, and Game Center are not advertised in this build:
+  their Apple/store credentials and native Tauri bridges are not configured.
 
-Artifacts in `build/releases/v26.11.0/`:
+The earlier v26.11.0 APK, IPA, DMG, and web ZIP embedded the suspended hosting
+address and are invalidated. They must be rebuilt and replaced. Final checksums
+will be recorded here after all six packages pass verification.
 
-- APK: `pet-fiasco-v26.11.0.apk` — SHA-256
-  `9880208a7c49ead911d8cac480d176e0101b19be26e6e3472bc9f3d66d8e74a3`
-- IPA: `pet-fiasco-Sideloadly-v26.11.0.ipa` — SHA-256
-  `de99712bf5a906b60d73a1be6c3fb604b11f3f7080d67320559eadfa23c433fd`
-- Web ZIP: `pet-fiasco-web-v26.11.0.zip` — SHA-256
-  `bdfca7762c2a36a30470cc962e76a189dbb7618bd4ba1c5be4cf7f8fa92f42fb`
-- macOS DMG: `pet-fiasco-macos-v26.11.0-arm64-ADHOC.dmg` — SHA-256
-  `edcb0e1e9e28964a8572e26c21215003527ea42d9bb4e2ce87aa1eee7eb189d6`
-
-Publication gate: commit and push the reviewed source, publish the four GitHub
-assets, re-download and checksum each URL, deploy both Firebase Hosting sites,
-then verify the live manifest, download page, and application JavaScript.
+Publication gate: commit and push the reviewed source, rebuild the APK, IPA,
+DMG, Windows ZIP, Linux archive, and web ZIP, replace the GitHub draft assets,
+re-download and checksum every URL, deploy both Firebase Hosting sites, then
+verify the live manifest, download page, and byte-identical application JavaScript.
 
 ## Previous release — v26.10.0
 

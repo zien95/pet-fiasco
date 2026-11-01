@@ -4,20 +4,25 @@
   "build": 261100,
   "title": "Pet Fiasco v26.11.0 — Exploration Update: Part 1",
   "required": false,
-  "release_date": "2026-10-21",
-  "size": "Tauri Android APK, Tauri Sideloadly IPA, Apple Silicon ad-hoc DMG, and web ZIP",
+  "release_date": "2026-11-01",
+  "size": "Tauri Android APK, Tauri Sideloadly IPA, macOS DMG, Windows ZIP, Linux archive, and web ZIP",
   "changelog": [
     "Exploration Update Part 1 expands the pet world to 72 by 90 world units",
     "Visit the vet, bed, toy yard, game station, pond, cottage, tree, park, and garden",
     "Use E or the mobile Action button to enter places and perform real care actions",
     "See the pet family together, with a larger selected pet and tap-to-switch companions",
     "Walk into the food bowl to eat while retaining jump and bird-flight interactions",
-    "Android and iPhone/iPad downloads are mobile-only Tauri shells that load the hosted game"
+    "Android and iPhone/iPad downloads are mobile-only Tauri shells that load the hosted game",
+    "Moved hosting, login, and cloud saves to a healthy Firebase project after the former project was suspended",
+    "Enabled email/password and Google sign-in with private cloud saves",
+    "Added native Windows and Linux desktop packages; Windows supports cloud accounts and Linux keeps local progress"
   ],
-  "download_url": "https://pet-fiasco.web.app/files/",
-  "web_url": "https://pet-fiasco.web.app/",
+  "download_url": "https://pet-fiasco-game.web.app/files/",
+  "web_url": "https://pet-fiasco-game.web.app/",
   "apk_url": "https://github.com/zien95/kitty-adventure/releases/download/v26.11.0/pet-fiasco-v26.11.0.apk",
   "ipa_url": "https://github.com/zien95/kitty-adventure/releases/download/v26.11.0/pet-fiasco-Sideloadly-v26.11.0.ipa",
   "macos_url": "https://github.com/zien95/kitty-adventure/releases/download/v26.11.0/pet-fiasco-macos-v26.11.0-arm64-ADHOC.dmg",
+  "windows_url": "https://github.com/zien95/kitty-adventure/releases/download/v26.11.0/pet-fiasco-windows-v26.11.0.zip",
+  "linux_url": "https://github.com/zien95/kitty-adventure/releases/download/v26.11.0/pet-fiasco-linux-v26.11.0.tar.gz",
   "web_zip_url": "https://github.com/zien95/kitty-adventure/releases/download/v26.11.0/pet-fiasco-web-v26.11.0.zip"
 }

@@ -1,0 +1,76 @@
+name: Build Windows and Linux release packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version without the leading v
+        required: true
+        default: 26.11.0
+
+permissions:
+  contents: write
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.38.7
+          channel: stable
+          cache: true
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+      - run: flutter pub get
+      - run: flutter build linux --release
+      - name: Package Linux app
+        run: |
+          mkdir -p dist
+          tar -czf "dist/pet-fiasco-linux-v${{ inputs.version }}.tar.gz" -C build/linux/x64/release/bundle .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pet-fiasco-linux
+          path: dist/*
+          if-no-files-found: error
+
+  windows:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.38.7
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter build windows --release
+      - name: Package Windows app
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath "dist/pet-fiasco-windows-v${{ inputs.version }}.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pet-fiasco-windows
+          path: dist/*
+          if-no-files-found: error
+
+  attach-to-draft:
+    runs-on: ubuntu-24.04
+    needs: [linux, windows]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pet-fiasco-*
+          path: dist
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ inputs.version }}
+          name: "Pet Fiasco v${{ inputs.version }} — Exploration Update: Part 1"
+          draft: true
+          files: dist/*

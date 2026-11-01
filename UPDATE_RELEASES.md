@@ -75,13 +75,13 @@ The worldwide connection URL is `PUBLIC_MANIFEST_URL` inside
 The permanent public game URL is:
 
 ```text
-https://pet-fiasco.web.app/
+https://pet-fiasco-game.web.app/
 ```
 
 The player-friendly downloads page is:
 
 ```text
-https://pet-fiasco.web.app/files/
+https://pet-fiasco-game.web.app/files/
 ```
 
 The ngrok URL remains the update and download server:

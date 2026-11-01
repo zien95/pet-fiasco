@@ -2,18 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>383935377007-4fhtd69kqpc1kek1gpoi09j20kqua8tl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.383935377007-4fhtd69kqpc1kek1gpoi09j20kqua8tl</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCrhfGC3FRz2vFrEVjZdMoIDNnR8WRm0L0</string>
+	<string>AIzaSyBaJo3gKrvy1EpWQ2bRab7MvVcCtYTLxBI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>546956544991</string>
+	<string>383935377007</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.tryingToRestorePup</string>
 	<key>PROJECT_ID</key>
-	<string>kitty-adventure-zona</string>
+	<string>pet-fiasco-live-2026</string>
 	<key>STORAGE_BUCKET</key>
-	<string>kitty-adventure-zona.firebasestorage.app</string>
+	<string>pet-fiasco-live-2026.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:546956544991:ios:3c53f9ecd1e46eca16926a</string>
+	<string>1:383935377007:ios:88915a4593dc931406e79a</string>
 </dict>
 </plist>

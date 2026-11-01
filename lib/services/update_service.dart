@@ -30,7 +30,7 @@ class UpdateService {
   static const String _pendingUpdateKey = 'kitty_pending_update';
 
   static const String _defaultManifestUrl =
-      'https://pet-fiasco.web.app/latest.json';
+      'https://pet-fiasco-game.web.app/latest.json';
   static const String _zonaBuiltInManifestUrl = String.fromEnvironment(
     'ZONA_UPDATE_MANIFEST_URL',
     defaultValue: '',

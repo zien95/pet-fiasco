@@ -1,12 +1,17 @@
 # Changelog
 
-## v26.11.0 - Exploration Update: Part 1 (2026-10-21)
+## v26.11.0 - Exploration Update: Part 1 (2026-11-01)
 
 - Expanded the explorable pet world to 72 by 90 world units.
 - Added nine illustrated destinations with real E/Action interactions.
 - Added visible companion pets; tap one to make it the larger selected pet.
 - Made walking into the bowl trigger eating while keeping jumping and bird flight.
 - Added Android and iPhone/iPad mobile-only Tauri shells that load the hosted game.
+- Migrated hosting, accounts, update checks, and cloud saves away from the
+  suspended Firebase project to `pet-fiasco-live-2026`.
+- Added native Windows and Linux packages plus Firebase App Distribution setup
+  for Android beta builds.
+- Enabled email/password and Google accounts on the new Firebase project.
 
 ## v26.10.0 - Third-Person Pet World (2026-10-16)
 
@@ -25,7 +30,7 @@
 
 - Replaced synthesized pet calls with licensed real cat, dog, bunny, fox, panda,
   and bird recordings, with an in-app Creative Commons credits page.
-- Rebranded to Pet Fiasco with the new pet-fiasco.web.app address.
+- Rebranded to Pet Fiasco with the new pet-fiasco-game.web.app address.
 - Added Firebase email/password accounts, password reset, private Firestore saves, and restore choices.
 - Added conflict detection to prevent silent cloud overwrites from another device.
 - Added pet day counters, age in days, and age-or-level evolution with a growth guide.

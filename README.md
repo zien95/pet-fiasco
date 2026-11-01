@@ -2,7 +2,7 @@
 
 Cozy virtual pet game with animal care, mini-games, secrets, rewards, and moon-garden vibes. 🐱🌙
 
-[Play the web version](https://pet-fiasco.web.app/)
+[Play the web version](https://pet-fiasco-game.web.app/)
 
 ## About
 
@@ -40,6 +40,13 @@ Version `26.11.0` is **Exploration Update: Part 1**:
 - Kept nearby scenery anchored while the pet visibly walks through the world.
 - Added the mobile-only Tauri shell for Android and iPadOS; it requires internet,
   loads hosted game updates automatically, and hides the web download button.
+- Moved hosting, accounts, and cloud saves to the dedicated
+  `pet-fiasco-live-2026` Firebase project after the former project was suspended.
+- Added native Windows and Linux desktop packages. Windows uses Firebase cloud
+  accounts; Linux currently keeps progress locally.
+- Added Firebase App Distribution project entries and a `pet-fiasco-beta`
+  tester group for pre-release Android builds.
+- Enabled Firebase email/password and Google sign-in on the healthy project.
 
 Also includes the `26.10.0` Third-Person Pet World update:
 
@@ -78,13 +85,19 @@ Also includes the Pet Parade update:
 
 ## Run Locally
 
-Cloud accounts use the Firebase project `kitty-adventure-zona`. Deploy the owner-only
-rules with `firebase deploy --only firestore:rules`. Enable Email/Password in Firebase
-Authentication before account testing. Local play works without signing in.
+Cloud accounts use the Firebase project `pet-fiasco-live-2026`. Deploy the owner-only
+rules with `firebase deploy --only firestore:rules`. Authentication configuration is
+stored in `firebase.json`; Firebase CLI 15 or newer can deploy Email/Password and Google
+with `firebase deploy --only auth`. Local play works without signing in.
 
-When moving from the old web address, sign in there and choose **Use this device’s
-progress** first. Then sign in at pet-fiasco.web.app and choose **Restore cloud
-progress**. Browser storage belongs to each address, so cloud saves bridge the move.
+Apple sign-in still needs an Apple Services ID, Team ID, Key ID, and private key. Play
+Games and Game Center also need their store-console projects plus native Tauri bridges.
+Those providers must not be shown to players until the matching credentials and mobile
+bridges are installed and tested.
+
+The former Firebase project is suspended, so its cloud accounts and saves cannot
+be migrated automatically. The new site starts with a fresh account system while
+keeping any progress already stored on the current device.
 
 ```bash
 flutter pub get

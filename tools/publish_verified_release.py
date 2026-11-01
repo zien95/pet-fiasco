@@ -70,7 +70,8 @@ def main():
     tag = 'v' + version
     directory = Path('build/releases') / tag
     assets = {manifest[key].rsplit('/', 1)[-1]: manifest[key]
-              for key in ['apk_url', 'ipa_url', 'macos_url', 'web_zip_url']}
+              for key in ['apk_url', 'ipa_url', 'macos_url', 'windows_url',
+                          'linux_url', 'web_zip_url']}
     for name in assets:
         if not (directory / name).is_file():
             raise RuntimeError(f'Missing artifact: {name}')
@@ -80,7 +81,8 @@ def main():
                     'web', 'updates', 'ios', 'macos', 'android/app/src',
                     'android/app/build.gradle.kts', 'android/settings.gradle.kts',
                     'android/app/google-services.json', 'firebase.json', 'firestore.rules',
-                    'mobile-tauri', 'test', 'tools', 'CHANGELOG.md', 'RELEASE_STATUS.md']
+                    'mobile-tauri', 'windows', 'linux', '.github/workflows',
+                    'test', 'tools', 'CHANGELOG.md', 'RELEASE_STATUS.md']
     dirty = subprocess.check_output(['git', 'status', '--porcelain', '--', *source_paths], text=True)
     if dirty:
         raise RuntimeError('Release source is uncommitted. Commit the reviewed release files before creating the GitHub tag.')
@@ -102,7 +104,8 @@ def main():
                 'destinations, functional Enter/Action controls, and a visible pet family '
                 'where companions can be tapped to take control.\n\n'
                 'The Android APK and unsigned Sideloadly IPA are mobile-only Tauri shells '
-                'that require internet and load the hosted game. The macOS app is '
+                'that require internet and load the hosted game. Native Windows and Linux '
+                'desktop packages are included; Linux currently uses local saves. The macOS app is '
                 'ad-hoc signed for Apple Silicon (arm64), without notarization. macOS may require explicit approval in Privacy & Security.\n\n'
                 f'Source: `{commit}`. Every asset was verified before publication.')
         release = curl(API + '/releases', token=token, method='POST', data={
@@ -117,7 +120,7 @@ def main():
             print(f'Uploaded {name}', flush=True)
     release = curl(API + '/releases/' + str(release['id']), token=token)
     if {a['name'] for a in release['assets']} != set(assets):
-        raise RuntimeError('Draft asset set does not match the four verified packages.')
+        raise RuntimeError('Draft asset set does not match the six verified packages.')
     for asset in release['assets']:
         local = directory / asset['name']
         expected = 'sha256:' + sha256(local)

@@ -104,7 +104,7 @@
           ]
         }
       ],
-      "site": "pet-fiasco"
+      "site": "pet-fiasco-game"
     },
     {
       "public": "build/web",
@@ -210,42 +210,43 @@
           ]
         }
       ],
-      "site": "kitty-adventure-zona"
+      "site": "pet-fiasco-live-2026"
     }
   ],
   "flutter": {
     "platforms": {
       "android": {
         "default": {
-          "projectId": "kitty-adventure-zona",
-          "appId": "1:546956544991:android:0fd16b55ca9f816716926a",
+          "projectId": "pet-fiasco-live-2026",
+          "appId": "1:383935377007:android:15f566c946412d8306e79a",
           "fileOutput": "android/app/google-services.json"
         }
       },
       "ios": {
         "default": {
-          "projectId": "kitty-adventure-zona",
-          "appId": "1:546956544991:ios:3c53f9ecd1e46eca16926a",
+          "projectId": "pet-fiasco-live-2026",
+          "appId": "1:383935377007:ios:88915a4593dc931406e79a",
           "uploadDebugSymbols": false,
           "fileOutput": "ios/Runner/GoogleService-Info.plist"
         }
       },
       "macos": {
         "default": {
-          "projectId": "kitty-adventure-zona",
-          "appId": "1:546956544991:ios:3c53f9ecd1e46eca16926a",
+          "projectId": "pet-fiasco-live-2026",
+          "appId": "1:383935377007:ios:88915a4593dc931406e79a",
           "uploadDebugSymbols": false,
           "fileOutput": "macos/Runner/GoogleService-Info.plist"
         }
       },
       "dart": {
         "lib/firebase_options.dart": {
-          "projectId": "kitty-adventure-zona",
+          "projectId": "pet-fiasco-live-2026",
           "configurations": {
-            "android": "1:546956544991:android:0fd16b55ca9f816716926a",
-            "ios": "1:546956544991:ios:3c53f9ecd1e46eca16926a",
-            "macos": "1:546956544991:ios:3c53f9ecd1e46eca16926a",
-            "web": "1:546956544991:web:c6fc6b03fdd0ad5416926a"
+            "android": "1:383935377007:android:15f566c946412d8306e79a",
+            "ios": "1:383935377007:ios:88915a4593dc931406e79a",
+            "macos": "1:383935377007:ios:88915a4593dc931406e79a",
+            "web": "1:383935377007:web:71341d5f1ac3856d06e79a",
+            "windows": "1:383935377007:web:71341d5f1ac3856d06e79a"
           }
         }
       }
@@ -256,7 +257,15 @@
   },
   "auth": {
     "providers": {
-      "emailPassword": true
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Pet Fiasco",
+        "supportEmail": "lookathowthingswork@gmail.com",
+        "authorizedRedirectUris": [
+          "https://pet-fiasco-game.web.app/__/auth/handler",
+          "https://pet-fiasco-live-2026.web.app/__/auth/handler"
+        ]
+      }
     }
   }
 }

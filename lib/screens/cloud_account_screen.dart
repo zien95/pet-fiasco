@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../services/cloud_save_service.dart';
@@ -18,6 +19,28 @@ class _CloudAccountScreenState extends State<CloudAccountScreen> {
   bool _working = false;
   String? _message;
 
+  String _authMessage(FirebaseAuthException error) => switch (error.code) {
+        'invalid-credential' ||
+        'wrong-password' ||
+        'user-not-found' =>
+          'Check your email and password.',
+        'email-already-in-use' =>
+          'That email already has an account. Choose Sign in.',
+        'weak-password' => 'Use a stronger password, at least 8 characters.',
+        'too-many-requests' => 'Too many attempts. Please try again later.',
+        'network-request-failed' => 'Connect to the internet and try again.',
+        'popup-blocked' =>
+          'Allow pop-ups for Pet Fiasco, then try Google sign-in again.',
+        'popup-closed-by-user' ||
+        'cancelled-popup-request' =>
+          'Google sign-in was cancelled.',
+        'operation-not-allowed' =>
+          'That sign-in method is not enabled for this release.',
+        'unsupported-platform' =>
+          'That sign-in method is not supported on this device yet.',
+        _ => error.message ?? 'Could not sign in. Please try again.',
+      };
+
   Future<void> _authenticate() async {
     if (!_form.currentState!.validate()) return;
     setState(() {
@@ -34,22 +57,26 @@ class _CloudAccountScreenState extends State<CloudAccountScreen> {
       }
       _password.clear();
     } on FirebaseAuthException catch (error) {
-      if (mounted)
-        setState(() => _message = switch (error.code) {
-              'invalid-credential' ||
-              'wrong-password' ||
-              'user-not-found' =>
-                'Check your email and password.',
-              'email-already-in-use' =>
-                'That email already has an account. Choose Sign in.',
-              'weak-password' =>
-                'Use a stronger password, at least 8 characters.',
-              'too-many-requests' =>
-                'Too many attempts. Please try again later.',
-              'network-request-failed' =>
-                'Connect to the internet and try again.',
-              _ => error.message ?? 'Could not sign in. Please try again.',
-            });
+      if (mounted) setState(() => _message = _authMessage(error));
+    } finally {
+      if (mounted) setState(() => _working = false);
+    }
+  }
+
+  Future<void> _signInWithGoogle() async {
+    setState(() {
+      _working = true;
+      _message = null;
+    });
+    try {
+      final provider = GoogleAuthProvider();
+      if (kIsWeb) {
+        await FirebaseAuth.instance.signInWithPopup(provider);
+      } else {
+        await FirebaseAuth.instance.signInWithProvider(provider);
+      }
+    } on FirebaseAuthException catch (error) {
+      if (mounted) setState(() => _message = _authMessage(error));
     } finally {
       if (mounted) setState(() => _working = false);
     }
@@ -159,6 +186,23 @@ class _CloudAccountScreenState extends State<CloudAccountScreen> {
                                     child: Text(_register
                                         ? 'Create account'
                                         : 'Sign in')),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 10),
+                                  child: Row(children: [
+                                    Expanded(child: Divider()),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 12),
+                                      child: Text('or'),
+                                    ),
+                                    Expanded(child: Divider()),
+                                  ]),
+                                ),
+                                OutlinedButton.icon(
+                                    onPressed:
+                                        _working ? null : _signInWithGoogle,
+                                    icon: const Icon(Icons.account_circle),
+                                    label: const Text('Continue with Google')),
                                 TextButton(
                                     onPressed: _working
                                         ? null

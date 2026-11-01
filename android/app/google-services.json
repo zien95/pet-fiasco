@@ -1,26 +1,43 @@
 {
   "project_info": {
-    "project_number": "546956544991",
-    "project_id": "kitty-adventure-zona",
-    "storage_bucket": "kitty-adventure-zona.firebasestorage.app"
+    "project_number": "383935377007",
+    "project_id": "pet-fiasco-live-2026",
+    "storage_bucket": "pet-fiasco-live-2026.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:546956544991:android:0fd16b55ca9f816716926a",
+        "mobilesdk_app_id": "1:383935377007:android:15f566c946412d8306e79a",
         "android_client_info": {
           "package_name": "com.example.trying_to_restore_pup"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "383935377007-521t96gdgum391l57oph99ar4ccf35k8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyD9WCl3gTs3RhWfQr1nyDrP3gzwyFozynQ"
+          "current_key": "AIzaSyDOrekc3leSmZM7C6yHf22u1-gIi0iTzlg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383935377007-521t96gdgum391l57oph99ar4ccf35k8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "383935377007-4fhtd69kqpc1kek1gpoi09j20kqua8tl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tryingToRestorePup"
+              }
+            }
+          ]
         }
       }
     }

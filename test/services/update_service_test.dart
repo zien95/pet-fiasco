@@ -6,7 +6,7 @@ void main() {
     test('accepts the explicit mobile-shell marker', () {
       expect(
         UpdateService.isTauriMobileUrl(
-          Uri.parse('https://pet-fiasco.web.app/?tauri-mobile=1'),
+          Uri.parse('https://pet-fiasco-game.web.app/?tauri-mobile=1'),
         ),
         isTrue,
       );
@@ -15,13 +15,13 @@ void main() {
     test('does not hide downloads on the ordinary website', () {
       expect(
         UpdateService.isTauriMobileUrl(
-          Uri.parse('https://pet-fiasco.web.app/'),
+          Uri.parse('https://pet-fiasco-game.web.app/'),
         ),
         isFalse,
       );
       expect(
         UpdateService.isTauriMobileUrl(
-          Uri.parse('https://pet-fiasco.web.app/?tauri-mobile=0'),
+          Uri.parse('https://pet-fiasco-game.web.app/?tauri-mobile=0'),
         ),
         isFalse,
       );

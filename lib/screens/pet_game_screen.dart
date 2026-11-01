@@ -92,7 +92,7 @@ class PetGameScreen extends StatefulWidget {
 class _PetGameScreenState extends State<PetGameScreen>
     with TickerProviderStateMixin {
   static final Uri _downloadsUri =
-      Uri.parse('https://pet-fiasco.web.app/files/');
+      Uri.parse('https://pet-fiasco-game.web.app/files/');
   static const int _gameTutorialRevision = 3;
   static const String _gameTutorialPreferenceKey =
       'zonaPetsGameTutorialRevision';

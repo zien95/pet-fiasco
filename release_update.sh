@@ -13,7 +13,7 @@ fi
 CHANGELOG=("$@")
 REQUIRED_UPDATE="${REQUIRED_UPDATE:-}"
 SKIP_BUILD="${SKIP_BUILD:-}"
-PUBLIC_GAME_URL="${ZONA_PUBLIC_GAME_URL:-${KITTY_PUBLIC_GAME_URL:-https://pet-fiasco.web.app}}"
+PUBLIC_GAME_URL="${ZONA_PUBLIC_GAME_URL:-${KITTY_PUBLIC_GAME_URL:-https://pet-fiasco-game.web.app}}"
 INDEXNOW_KEY="${ZONA_INDEXNOW_KEY:-${KITTY_INDEXNOW_KEY:-7814c885d95d04f5e4dad44845b8240c}}"
 
 log() {
@@ -287,7 +287,7 @@ deploy_public_game() {
   fi
 
   log "Publishing the searchable web game"
-  firebase deploy --only hosting --project kitty-adventure-zona
+  firebase deploy --only hosting --project pet-fiasco-live-2026
 }
 
 notify_search_engines() {

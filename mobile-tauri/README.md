@@ -3,7 +3,7 @@
 This project is intentionally for Android and iOS/iPadOS only. It loads the
 hosted Pet Fiasco game from:
 
-`https://pet-fiasco.web.app/?tauri-mobile=1`
+`https://pet-fiasco-game.web.app/?tauri-mobile=1`
 
 The query marker tells the Flutter web app that it is inside the mobile shell.
 In that mode, game content comes directly from Firebase Hosting, the web

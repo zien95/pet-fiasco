@@ -16,7 +16,7 @@ esac
 command -v curl >/dev/null || { printf '%s\n' 'curl is required.' >&2; exit 1; }
 command -v python3 >/dev/null || { printf '%s\n' 'Python 3 is required.' >&2; exit 1; }
 
-manifest_url="${PET_FIASCO_MANIFEST_URL:-https://pet-fiasco.web.app/latest.json}"
+manifest_url="${PET_FIASCO_MANIFEST_URL:-https://pet-fiasco-game.web.app/latest.json}"
 manifest=$(curl -fsSL --proto '=https' --proto-redir '=https' --max-time 30 "$manifest_url")
 selection=$(printf '%s' "$manifest" | python3 -c '
 import json, sys
