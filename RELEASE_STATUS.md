@@ -1,8 +1,9 @@
 # Pet Fiasco v26.11.0 release status
 
-## Release candidate — rebuilding for publication 2026-11-01
+## Final result — published and deployed 2026-11-01
 
 - Codename: **Exploration Update: Part 1**.
+- Release: https://github.com/zien95/kitty-adventure/releases/tag/v26.11.0
 - Flutter tests: **57 passed**. Full analyzer completed with only the repository's
   pre-existing lint backlog.
 - Hosting, email/password, Google sign-in, Firestore rules, update checks, and
@@ -18,15 +19,28 @@
   Sideloadly and cannot be sent through App Distribution without Apple signing.
 - Apple sign-in, Play Games, and Game Center are not advertised in this build:
   their Apple/store credentials and native Tauri bridges are not configured.
+- Pet death and permanent pet loss are deliberately not features. Low needs can
+  make a pet hungry, tired, messy, or in need of the vet, but never dead.
 
-The earlier v26.11.0 APK, IPA, DMG, and web ZIP embedded the suspended hosting
-address and are invalidated. They must be rebuilt and replaced. Final checksums
-will be recorded here after all six packages pass verification.
+Final SHA-256 checksums:
 
-Publication gate: commit and push the reviewed source, rebuild the APK, IPA,
-DMG, Windows ZIP, Linux archive, and web ZIP, replace the GitHub draft assets,
-re-download and checksum every URL, deploy both Firebase Hosting sites, then
-verify the live manifest, download page, and byte-identical application JavaScript.
+- Android APK: `305fae45d3f4ed8d1f9b3903feac4fd5a7baa5ce61a79b9e1d389e8c714d0d07`
+- iPhone/iPad Sideloadly IPA: `363de04c8312152e9d20f1f5e0b4e8692e36428f193740ff98c4f6ae6ff6654c`
+- macOS arm64 ad-hoc DMG: `d47eca59737d85d8cbdbf67ab5f9fdee5c4d9d6a4125f113cc58ec9efbd4c894`
+- Windows ZIP: `f86674ab6ed23d6066e96f522d858b1320a39b886948f17633d368a90a11e633`
+- Linux archive: `fe2be47879f83f43ece9c5ee2db503fd2c9dab398892a4d7c961b76c119d74ed`
+- Web ZIP: `e165f73b59ccb473fdd607fa038688c1d05683ee37ce6c118de90217a41780d4`
+
+The Android beta was distributed to the `Pet Fiasco Beta` Firebase App
+Distribution group. The unsigned IPA is valid for Sideloadly but cannot be put
+in iOS App Distribution until an Apple Development/Distribution team supplies a
+signed provisioning profile. The macOS DMG is Apple Silicon only, ad-hoc signed,
+and unnotarized; it may require approval in Privacy & Security. Cross-Mac cloud
+authentication persistence has not been independently exercised.
+
+Both Firebase Hosting sites serve byte-identical release JavaScript and
+manifests. All six GitHub release assets were compared with their local SHA-256
+digests and then re-downloaded from their public URLs after publication.
 
 ## Previous release — v26.10.0
 
